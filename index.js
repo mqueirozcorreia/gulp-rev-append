@@ -5,7 +5,6 @@ var Buffer = require('buffer').Buffer;
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var map = require('event-stream').map;
-var untildify = require('untildify');
 
 var FILE_DECL = /(?:href=|src=|url\()['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
 
@@ -37,6 +36,9 @@ var revPlugin = function revPlugin() {
     console.log(file.base);
     console.log('path.dirname(file.path)');
     console.log(path.dirname(file.path));
+    console.log('path.resolve(../)');
+    console.log(path.resolve('../'));
+    
     for(i = 0; i < length; i++) {
       line = lines[i];
       groups = FILE_DECL.exec(line);
