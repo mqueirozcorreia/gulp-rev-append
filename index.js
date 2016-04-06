@@ -33,6 +33,10 @@ var revPlugin = function revPlugin() {
     lines = contents.split('\n');
     length = lines.length;
 
+    console.log('file.base');
+    console.log(file.base);
+    console.log('path.dirname(file.path)');
+    console.log(path.dirname(file.path));
     for(i = 0; i < length; i++) {
       line = lines[i];
       groups = FILE_DECL.exec(line);
@@ -40,8 +44,6 @@ var revPlugin = function revPlugin() {
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
         console.log(normPath);
-        console.log('file.base' + file.base);
-        console.log('path.dirname(file.path)' + path.dirname(file.path));
         if (normPath.indexOf('~') === 0) {
           dependencyPath = untildify(normPath);
           console.log(dependencyPath);
