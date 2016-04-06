@@ -5,6 +5,7 @@ var Buffer = require('buffer').Buffer;
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var map = require('event-stream').map;
+var tildify = require('tildify');
 
 var FILE_DECL = /(?:href=|src=|url\()['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
 
@@ -39,7 +40,11 @@ var revPlugin = function revPlugin() {
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
         console.log(normPath);
-        if (normPath.indexOf(path.sep) === 0) {
+        if (normPath.indexOf('~') === 0) {
+          dependencyPath = tildify(normPath);
+          console.log(dependencyPath);
+        } 
+        else if (normPath.indexOf(path.sep) === 0) {
           dependencyPath = path.join(file.base, normPath);
         } 
         else {
