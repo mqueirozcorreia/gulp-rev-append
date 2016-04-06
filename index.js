@@ -44,6 +44,8 @@ var revPlugin = function revPlugin() {
         else {
           dependencyPath = path.resolve(path.dirname(file.path), normPath);
         }
+        
+        console.log(dependencyPath);
 
         try {
           data = fs.readFileSync(dependencyPath);
