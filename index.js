@@ -47,7 +47,7 @@ var revPlugin = function revPlugin() {
         var normPath = path.normalize(groups[1]);
         console.log(normPath);
         if (normPath.indexOf('~') === 0) {
-          dependencyPath = untildify(normPath);
+          dependencyPath = normPath;
           console.log(dependencyPath);
         } 
         else if (normPath.indexOf(path.sep) === 0) {
