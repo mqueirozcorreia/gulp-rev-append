@@ -32,22 +32,15 @@ var revPlugin = function revPlugin() {
     lines = contents.split('\n');
     length = lines.length;
 
-    console.log('file.base');
-    console.log(file.base);
-    console.log('path.dirname(file.path)');
-    console.log(path.dirname(file.path));
-    console.log('path.resolve(../)');
-    console.log(path.resolve('../'));
-    
     for(i = 0; i < length; i++) {
       line = lines[i];
       groups = FILE_DECL.exec(line);
       if(groups && groups.length > 1) {
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
-        console.log(normPath);
+        
         if (normPath.indexOf('~') === 0) {
-          dependencyPath = normPath;
+          dependencyPath = path.resolve(normPath.replace('~', '.'));
           console.log(dependencyPath);
         } 
         else if (normPath.indexOf(path.sep) === 0) {
@@ -57,8 +50,6 @@ var revPlugin = function revPlugin() {
           dependencyPath = path.resolve(path.dirname(file.path), normPath);
         }
         
-        console.log(dependencyPath);
-
         try {
           data = fs.readFileSync(dependencyPath);
           hash = crypto.createHash('md5');
