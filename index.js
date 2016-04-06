@@ -40,8 +40,8 @@ var revPlugin = function revPlugin() {
         var normPath = path.normalize(groups[1]);
         
         if (normPath.indexOf('~') === 0) {
+          //In asp.net the tilde(~) is used to represent the project base path. Here '~' is being replaced by path.resolve('.')
           dependencyPath = path.resolve(normPath.replace('~', '.'));
-          console.log(dependencyPath);
         } 
         else if (normPath.indexOf(path.sep) === 0) {
           dependencyPath = path.join(file.base, normPath);
