@@ -38,6 +38,7 @@ var revPlugin = function revPlugin() {
       if(groups && groups.length > 1) {
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
+        console.log(normPath);
         if (normPath.indexOf(path.sep) === 0) {
           dependencyPath = path.join(file.base, normPath);
         } 
