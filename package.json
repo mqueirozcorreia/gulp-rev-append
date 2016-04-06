@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "event-stream": "^3.1.0",
-    "gulp-util": "^2.2.14"
+    "gulp-util": "^2.2.14",
+    "tildify": "^1.1.2",
+    "untildify": "^2.1.0"
   }
 }
