@@ -1,6 +1,6 @@
 gulp-rev-append
 ---
-> gulp plugin for cache-busting files using query string file hash
+> gulp plugin for cache-busting files using query string file hash. The main difference of this branch for the original is to work with "~", which is used in ASP.NET to reference the project root path.
 
 [![Build Status](https://travis-ci.org/bustardcelly/gulp-rev-append.png?branch=master)](https://travis-ci.org/bustardcelly/gulp-rev-append)
 
